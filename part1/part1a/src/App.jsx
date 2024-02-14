@@ -1,10 +1,29 @@
-const App = () => {
-  const friends = [ 'Peter', 'Maya' ];
+const Hello = ({name, age}) => {
+  // component helper function
+  const bornYear = () => new Date().getFullYear() - age;
+
   return (
-    <>
+    <div>
+      <p>
+        Hello {name}, you are {age} years old
+      </p>
+      <p>So you are probably born in {bornYear()}</p>
+    </div>
+  )
+}
+
+
+
+
+const App = () => {
+  const name = 'Peter';
+  const age = 10;
+  return (
+    <div>
       <h1>Greetings</h1>
-      <p>{friends}</p>
-    </>
+      <Hello name="Maya" age={26+10} />
+      <Hello name={name} age={age} />
+    </div>
   )
 }
 
