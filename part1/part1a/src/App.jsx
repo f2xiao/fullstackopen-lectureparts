@@ -1,20 +1,28 @@
 import { useState } from "react";
 
+const Button = ({OnClick, text}) => <button onClick={OnClick} > {text} </button> 
 
 
 const App = () => {
   // adds state to the component and renders it initialized with the value of zero
   const [counter, setCounter] = useState(0);
 
-  // execute the setTimeout
-  setTimeout(
-    () => setCounter(counter + 1), // increment the counter state
-    1000 // every 1s
-  );
+  // event handlers
+  const increaseByOne = () => setCounter(counter + 1); 
+  const decreaseByOne = () => setCounter(counter - 1); 
+  const resetToZero = () => setCounter(0); 
   
   return (
     <div>
-      {counter}
+      <p>{counter}</p>
+      <Button OnClick={increaseByOne} text={'plus'} />
+      <br />
+      <Button OnClick={decreaseByOne} text={'minus'} />
+      {/* <button onClick={decreaseByOne}>minus</button> */}
+      <br />
+      <Button OnClick={resetToZero} text={'zero'} />
+      {/* <button onClick={resetToZero}>zero</button> */}
+      <hr />
     </div>
   )
 }
