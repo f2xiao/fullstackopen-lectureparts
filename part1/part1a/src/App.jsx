@@ -18,10 +18,8 @@ const App = () => {
       <Button OnClick={increaseByOne} text={'plus'} />
       <br />
       <Button OnClick={decreaseByOne} text={'minus'} />
-      {/* <button onClick={decreaseByOne}>minus</button> */}
       <br />
       <Button OnClick={resetToZero} text={'zero'} />
-      {/* <button onClick={resetToZero}>zero</button> */}
       <hr />
     </div>
   )
