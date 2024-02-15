@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const Button = ({OnClick, text}) => <button onClick={OnClick} > {text} </button> 
 
+const Display = ({counter}) => <p>{counter}</p>
 
 const App = () => {
   // adds state to the component and renders it initialized with the value of zero
@@ -14,13 +15,10 @@ const App = () => {
   
   return (
     <div>
-      <p>{counter}</p>
+      <Display counter={counter} />
       <Button OnClick={increaseByOne} text={'plus'} />
-      <br />
       <Button OnClick={decreaseByOne} text={'minus'} />
-      <br />
       <Button OnClick={resetToZero} text={'zero'} />
-      <hr />
     </div>
   )
 }
