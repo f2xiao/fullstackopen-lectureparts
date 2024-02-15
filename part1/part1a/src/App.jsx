@@ -9,18 +9,18 @@ const App = () => {
 
  
   // event handlers
-  const handleLeft = () => { setClicks(
+  const handleLeft = () => setClicks(
     {
-      left: clicks.left + 1, 
-      right: clicks.right
+      ...clicks,
+      left: clicks.left + 1
     }
-  )}
-  const handleRight = () => { setClicks(
+  )
+  const handleRight = () => setClicks(
     {
-      left: clicks.left, 
+      ...clicks, 
       right: clicks.right + 1
     }
-  )}
+  )
   
   return (
     <div>
