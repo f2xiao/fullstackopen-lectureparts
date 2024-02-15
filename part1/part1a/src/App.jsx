@@ -2,19 +2,32 @@ import { useState } from "react";
 
 const App = () => {
   // adds state to the component and renders it initialized with the value of zero
-  const [left, setLeft] = useState(0);
-  const [right, setRight] = useState(0);
+  const [clicks, setClicks] = useState({
+    left: 0,
+    right: 0
+  })
+
  
   // event handlers
-  const handleLeft = () => { setLeft(left + 1) }
-  const handleRight = () => { setRight(right + 1) }
+  const handleLeft = () => { setClicks(
+    {
+      left: clicks.left + 1, 
+      right: clicks.right
+    }
+  )}
+  const handleRight = () => { setClicks(
+    {
+      left: clicks.left, 
+      right: clicks.right + 1
+    }
+  )}
   
   return (
     <div>
-      {left}
+      {clicks.left}
       <button onClick={handleLeft} >left</button>
       <button onClick={handleRight} >right</button>
-      {right}
+      {clicks.right}
     </div>
   )
 }
