@@ -14,7 +14,7 @@ const App = () => {
       {value}
       <Button handleClick={setToValue(0)} text="reset" />
       <Button handleClick={setToValue(100)} text="hundred" />
-      <Button handleClick={setToValue(0)} text="increment" />
+      <Button handleClick={setToValue(value + 1)} text="increment" />
     </div>
   )
 }
