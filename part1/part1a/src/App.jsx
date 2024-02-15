@@ -2,32 +2,34 @@ import { useState } from "react";
 
 const App = () => {
   // adds state to the component and renders it initialized with the value of zero
-  const [clicks, setClicks] = useState({
-    left: 0,
-    right: 0
-  })
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
+  const [allClicks, setAll] = useState([]);
+  const [total, setToatl] = useState(left+right)
 
- 
   // event handlers
-  const handleLeft = () => setClicks(
-    {
-      ...clicks,
-      left: clicks.left + 1
-    }
-  )
-  const handleRight = () => setClicks(
-    {
-      ...clicks, 
-      right: clicks.right + 1
-    }
-  )
+  const handleLeft = () => { 
+    const updatedLeft = left + 1;
+    setLeft(updatedLeft);
+    setToatl(updatedLeft + right);
+    setAll(allClicks.concat('L')) 
+  }
+  const handleRight = () => { 
+    const updatedRight = right + 1;
+    setRight(updatedRight);
+    setToatl(left + updatedRight);
+    setAll(allClicks.concat('R')) 
+  }
+  
   
   return (
     <div>
-      {clicks.left}
+      {left}
       <button onClick={handleLeft} >left</button>
       <button onClick={handleRight} >right</button>
-      {clicks.right}
+      {right}
+      <p>{allClicks.join('')}</p>
+      <p>Total clicks: {total}</p>
     </div>
   )
 }
