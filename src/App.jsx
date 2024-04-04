@@ -6,14 +6,14 @@ function App() {
   const [newNotes, setNewNotes] = useState([]);
   const [newNote, setNewNote] = useState("a new note");
 
-  console.log(noteServices);
+  // console.log(noteServices);
 
   useEffect(() => {
     const fetchNotes = async () => {
       const notes = await noteServices.getAll();
-      console.log(notes);
+      // console.log(notes);
 
-      return notes;
+      setNewNotes(notes);
     };
 
     fetchNotes();
@@ -25,13 +25,21 @@ function App() {
 
   const addNote = (event) => {
     event.preventDefault();
-    setNewNotes(
-      newNotes.concat({
-        id: newNotes.length + 1,
-        content: newNote,
-        important: Math.random() < 0.5,
+
+    const noteObj = {
+      content: newNote,
+      important: Math.random() < 0.5,
+    };
+
+    noteServices
+      .create(noteObj)
+      .then((returnedNote) => {
+        setNewNotes(newNotes.concat(returnedNote));
+        setNewNote("");
       })
-    );
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -43,7 +51,7 @@ function App() {
       </ul>
       <form onSubmit={addNote}>
         <input type="text" value={newNote} onChange={handleNoteChange} />
-        <button type="submit">save</button>
+        <button type="submit">add</button>
       </form>
     </>
   );
