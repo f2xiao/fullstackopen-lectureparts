@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Note from "./components/Note";
-function App({ notes }) {
-  const [newNotes, setNewNotes] = useState(notes);
+import noteServices from "./services/notes";
 
+function App() {
+  const [newNotes, setNewNotes] = useState([]);
   const [newNote, setNewNote] = useState("a new note");
+
+  console.log(noteServices);
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      const notes = await noteServices.getAll();
+      console.log(notes);
+
+      return notes;
+    };
+
+    fetchNotes();
+  }, []);
 
   const handleNoteChange = (event) => {
     setNewNote(event.target.value);
